@@ -1,0 +1,47 @@
+{
+  "wechat": {
+    "name": "你的称呼",
+    "title": "贷款顾问",
+    "qr_base_path": "/sdcard/Download/wechat-qr.png",
+    "welcome_message": "您好，我是贷款顾问{名字}，专注个人消费贷和企业经营贷，利率低、放款快。请简单说明您的需求（金额/用途/期限），我会给您专业建议。"
+  },
+  "scrapers": {
+    "enabled": ["zhihu", "weibo", "xianyu"],
+    "interval_minutes": 30,
+    "keywords": [
+      "贷款",
+      "借钱",
+      "资金周转",
+      "借款",
+      "借贷",
+      "房贷",
+      "车贷",
+      "信用贷",
+      "经营贷",
+      "企业贷款",
+      "资金紧张",
+      "缺钱",
+      "融资"
+    ],
+    "exclude_keywords": [
+      "招聘",
+      "求职",
+      "出售",
+      "二手"
+    ]
+  },
+  "outreach": {
+    "method": "qr_code",
+    "daily_limit": 50,
+    "message_template": "您好，看到您在关注贷款相关信息。我是专业贷款顾问，可以帮您匹配低息产品。如需咨询请加微信：{微信号} 或扫描下方二维码。"
+  },
+  "database": {
+    "path": "/sdcard/Download/loan-assistant/customers.db"
+  },
+  "schedule": {
+    "enabled": true,
+    "start_time": "09:00",
+    "end_time": "21:00",
+    "timezone": "Asia/Shanghai"
+  }
+}

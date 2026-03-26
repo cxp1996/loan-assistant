@@ -1,0 +1,83 @@
+# Check configuration tokens
+# Ensure build layout
+# Check configuration tokens
+# Preparing build
+# Check requirements for android
+# Search for Git (git)
+#  -> found at /usr/bin/git
+# Search for Cython (cython)
+#  -> found at /home/admin/.local/bin/cython
+# Search for Java compiler (javac)
+#  -> found at /usr/lib/jvm/java-11-openjdk-amd64/bin/javac
+# Search for Java keytool (keytool)
+#  -> found at /usr/lib/jvm/java-11-openjdk-amd64/bin/keytool
+# Install platform
+# Run ['git', 'config', '--get', 'remote.origin.url']
+# Cwd /home/admin/openclaw/workspace/loan-assistant/.buildozer/android/platform/python-for-android
+https://gitee.com/mirrors/python-for-android.git
+# Run ['git', 'branch', '-vv']
+# Cwd /home/admin/openclaw/workspace/loan-assistant/.buildozer/android/platform/python-for-android
+* master 957a3e5f [origin/master] Merge pull request #2959 from kivy/release-2024.01.21
+# Detected old url/branch (https://gitee.com/mirrors/python-for-android.git/master), deleting...
+# Run ['git', 'clone', '-b', 'master', '--single-branch', 'https://github.com/kivy/python-for-android.git', 'python-for-android']
+# Cwd /home/admin/openclaw/workspace/loan-assistant/.buildozer/android/platform
+Cloning into 'python-for-android'...
+fatal: could not read Username for 'https://gitee.com': No such device or address
+# Command failed: ['git', 'clone', '-b', 'master', '--single-branch', 'https://github.com/kivy/python-for-android.git', 'python-for-android']
+# ENVIRONMENT:
+#     SHELL = '/bin/bash'
+#     SESSION_MANAGER = 'local/iZuf6ipfaj6sj36i4xv2qoZ:@/tmp/.ICE-unix/1654,unix/iZuf6ipfaj6sj36i4xv2qoZ:/tmp/.ICE-unix/1654'
+#     QT_ACCESSIBILITY = '1'
+#     XDG_CONFIG_DIRS = '/etc/xdg/xdg-ubuntu-xorg:/etc/xdg'
+#     XDG_SESSION_PATH = '/org/freedesktop/DisplayManager/Session0'
+#     NVM_INC = '/home/admin/.nvm/versions/node/v24.14.0/include/node'
+#     XDG_MENU_PREFIX = 'gnome-'
+#     GNOME_DESKTOP_SESSION_ID = 'this-is-deprecated'
+#     GTK_IM_MODULE = 'ibus'
+#     GNOME_SHELL_SESSION_MODE = 'ubuntu'
+#     SSH_AUTH_SOCK = '/run/user/1000/keyring/ssh'
+#     NODE_NO_WARNINGS = '1'
+#     XMODIFIERS = '@im=ibus'
+#     DESKTOP_SESSION = 'ubuntu-xorg'
+#     SSH_AGENT_PID = '1548'
+#     GTK_MODULES = 'gail:atk-bridge'
+#     PWD = '/home/admin/openclaw/workspace/loan-assistant'
+#     XDG_SESSION_DESKTOP = 'ubuntu:GNOME'
+#     LOGNAME = 'admin'
+#     XDG_SESSION_TYPE = 'x11'
+#     GPG_AGENT_INFO = '/run/user/1000/gnupg/S.gpg-agent:0:1'
+#     SYSTEMD_EXEC_PID = '2203'
+#     VIPSHOME = '/target'
+#     XAUTHORITY = '/tmp/xauth_RkinRn'
+#     INTRA_CLOUD_ACCELERATION_REGION = 'cn-shanghai'
+#     HOME = '/home/admin'
+#     IM_CONFIG_PHASE = '1'
+#     LANG = 'C.UTF-8'
+#     XDG_CURRENT_DESKTOP = 'ubuntu:GNOME'
+#     XDG_SEAT_PATH = '/org/freedesktop/DisplayManager/Seat0'
+#     INVOCATION_ID = 'e15ba6e226ed498bac023d8f6aa5ca5b'
+#     MANAGERPID = '1456'
+#     NVM_DIR = '/home/admin/.nvm'
+#     XDG_SESSION_CLASS = 'user'
+#     OPENCLAW_GATEWAY_PORT = '18789'
+#     USER = 'admin'
+#     DISPLAY = ':1'
+#     SHLVL = '0'
+#     NVM_CD_FLAGS = ''
+#     OPENCLAW_PATH_BOOTSTRAPPED = '1'
+#     QT_IM_MODULE = 'ibus'
+#     XDG_RUNTIME_DIR = '/run/user/1000'
+#     JOURNAL_STREAM = '8:44599'
+#     XDG_DATA_DIRS = '/usr/share/ubuntu-xorg:/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop'
+#     PATH = '/home/admin/.buildozer/android/platform/apache-ant-1.9.4/bin:/home/admin/.nvm/versions/node/v24.14.0/bin:/usr/local/bin:/home/admin/.local/bin:/usr/bin:/bin'
+#     OPENCLAW_NODE_OPTIONS_READY = '1'
+#     DBUS_SESSION_BUS_ADDRESS = 'unix:path=/run/user/1000/bus'
+#     NVM_BIN = '/home/admin/.nvm/versions/node/v24.14.0/bin'
+#     OLDPWD = '/home/admin/openclaw/workspace'
+#     _ = '/home/admin/.local/bin/buildozer'
+# 
+# Buildozer failed to execute the last command
+# The error might be hidden in the log above this error
+# Please read the full log, and search for it before
+# raising an issue with buildozer itself.
+# In case of a bug report, please add a full log with log_level = 2
