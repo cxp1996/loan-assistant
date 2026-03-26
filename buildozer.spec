@@ -33,7 +33,8 @@ orientation = portrait
 android.permissions = INTERNET,ACCESS_NETWORK_STATE,WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE
 
 # 需要的 Python 依赖
-# 使用纯 SDL2 bootstrap，Kivy 会使用内置的图像支持
+# 移除 sdl2_image/sdl2_mixer/sdl2_ttf 以避免 Google 服务器依赖
+# Kivy 使用纯 Python 图像支持
 requirements = python3,requests,beautifulsoup4,schedule,aiohttp,sqlite3,kivy,pyjnius
 
 # 应用图标
