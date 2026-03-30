@@ -5,29 +5,66 @@ on:
     branches: [ main, master ]
   workflow_dispatch:  # 允许手动触发
 
+env:
+  BUILDOZER_ALLOW_ROOT: 1
+
 jobs:
   build:
     runs-on: ubuntu-22.04
-    container: ghcr.io/kivy/buildozer:latest
     
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           submodules: false
+          fetch-depth: 1
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.8'
+      
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            git zip unzip openjdk-17-jdk \
+            libssl-dev libffi-dev \
+            python3-dev python3-pip \
+            libsdl2-dev libsdl2-image-dev \
+            libsdl2-mixer-dev libsdl2-ttf-dev \
+            libgstreamer1.0-dev \
+            gstreamer1.0-plugins-base \
+            gstreamer1.0-plugins-good \
+            autoconf automake build-essential \
+            wget curl cmake pkg-config \
+            libgl1-mesa-dev libgles2-mesa-dev
+          
+          # 设置 Java 环境
+          echo "JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64" >> $GITHUB_ENV
+      
+      - name: Install Buildozer
+        run: |
+          pip3 install --upgrade pip
+          pip3 install buildozer cython==0.29.33
+      
+      - name: Accept Android licenses
+        run: |
+          mkdir -p ~/.android
+          echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" > ~/.android/android-sdk-license
+          echo "8933bad161af4178b1185d1a37fbf41ea5269c55" >> ~/.android/android-sdk-license
+          echo "d56f5187479451eabf01fb78af6dfcb131a6481e" >> ~/.android/android-sdk-license
+      
+      - name: Clean previous builds
+        run: |
+          rm -rf .buildozer
+          rm -rf bin
+          buildozer android clean || true
       
       - name: Build APK
         run: |
-          # 确保 SDK 许可证已接受
-          mkdir -p /root/.android
-          echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" > /root/.android/android-sdk-license
-          
-          # 允许以 root 身份运行 Buildozer
-          export BUILDOZER_ALLOW_ROOT=1
-          
-          # 清理并构建
-          buildozer android clean || true
           buildozer -v android debug
+        timeout-minutes: 90
       
       - name: Upload APK
         uses: actions/upload-artifact@v4
@@ -35,3 +72,19 @@ jobs:
           name: loan-assistant-apk
           path: bin/*.apk
           if-no-files-found: error
+      
+      - name: Create Release
+        if: success()
+        uses: softprops/action-gh-release@v1
+        with:
+          files: bin/*.apk
+          tag_name: v1.0.0-${{ github.run_number }}
+          name: Build #${{ github.run_number }} - ${{ github.event.head_commit.message }}
+          body: |
+            自动构建的 APK 文件
+            构建时间：${{ github.event.head_commit.timestamp }}
+            Commit: ${{ github.sha }}
+          draft: false
+          prerelease: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
